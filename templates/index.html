@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Flash Recall</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" href={{ cssdir }}>
+    <script type="text/javascript" src={{ jsdir }}></script>
+  </head>
+  <body onload="init()">
+    <div class="container is-max-desktop">
+        <div class="logo-wrapper">
+        <img src={{ logodir }} class="logo" width = "100" height="100" alt="Image">
+        </div>
+        <h1 class="title">Flash Recall</h1>
+        <p class="subtitle">Using Flashcards to Automate Active Recall!</p>
+
+        <div class="card column is-half is-offset-one-quarter">
+            <div class="card-content">
+                <div class="content">
+                    <form class="dropfile" action="/" method="POST" enctype="multipart/form-data">
+                        {{ form.csrf_token }}
+                        <div class="file-upload">
+                            <label class="button is-primary is-focused">
+                                <input type="file" id="image" name="image">
+                                Upload File
+                            </label>    
+                        </div>
+                        <label class="checkbox">
+                            <input type="checkbox" name="chk" value="highlight" unchecked>
+                            Highlighted?
+                        </label>
+                        <input type="checkbox" name="def" style="display: none;" value="default" checked>
+                        <div class="subbtn">
+                            <button type="submit" class="button is-link">SUBMIT</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <p class="credits">Tanvir Deol and Navjot Singh</p>    
+    </div>
+    
+    
+  </body>
+</html>

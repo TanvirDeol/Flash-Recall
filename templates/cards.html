@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Flash Recall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" href={{ cssdir }}>
+    <script type="text/javascript" src={{ jsdir }}></script>
+  </head>
+  <body>
+
+    <div class="container is-max-desktop">
+            {% for i in range(N)%}
+            <div class="card column is-half is-offset-one-quarter">
+                <div class="card-content">
+                <div class="content">
+                        <p class="subtitle is-4">Q: {{questions[i]}}</p>
+                        <form class="ans-wrapper">
+                            <input type="text" id="ans" name="ans" class="input"><br><br>
+                        </form>
+                        <div class="main-btn">
+                        <button class="button is-light" value="{{i}}" onclick="skipQuestion(this)">Skip</button>
+                        <button class="button is-success" value ={{i}} id ="check-{{i}}" onclick = "checkAns(this)" >Check Answer</button>
+                        </div>
+                        <div class="answer-check" id='{{i}}'>
+                            <p class="subtitle is-4">A: {{answers[i]}}</p>
+                            <h6 style="text-align: center;color:gray;">Mark Yourself</h6>
+                            <div class="check-wrap">
+                                <button class="button is-success" value ={{i}} id= "correct-{{i}}" onclick="mark(this,1)" >✓</button>
+                                <button class="button is-danger" value ={{i}} id="wrong-{{i}}" onclick="mark(this,0)">✖</button>
+                            </div>
+                        </div>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="end-btn">
+                <div class="score-wrapper">
+                    <button class="button is-success" onclick="seeScore()">See Your Score</button>
+                    <button class="button is-link">Try Again</button>
+                </div>
+                <div class="notification is-success column is-one-third is-offset-one-third" id="score-board" style="display: none;">
+                    <p id="score-text" >Your score was 0 out of 0.</p>
+                </div>
+            </div>
+    </div>
+    
+    
+  </body>
+</html>
